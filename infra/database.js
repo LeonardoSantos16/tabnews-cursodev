@@ -27,10 +27,12 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const orchestrator = {
   query: query,
   getNewClient,
 };
+
+export default orchestrator;
 
 function getSSLValues() {
   if (process.env.POSTGRES_CA) {
