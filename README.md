@@ -34,7 +34,7 @@ Ao finalizar a base do curso, as seguintes melhorias serão implementadas para d
 ## 💻 Como rodar o projeto
 
 ```bash
-git clone [https://github.com/seu-usuario/clone-tabnews.git](https://github.com/seu-usuario/clone-tabnews.git)
+git clone https://github.com/LeonardoSantos16/tabnews-cursodev
 npm install
 npm run services:up
 npm run dev
