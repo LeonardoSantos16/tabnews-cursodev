@@ -6,22 +6,22 @@ Projeto focado em fundamentos de engenharia de software, arquitetura de sistemas
 
 ## Tech Stack
 
-* **Framework:** Next.js
-* **Linguagem:** JavaScript (Node.js)
-* **Banco de Dados:** PostgreSQL
-* **Testes:** Jest (TDD)
-* **Infraestrutura:** Docker & Docker Compose
-* **Deploy:** Vercel
+- **Framework:** Next.js
+- **Linguagem:** JavaScript (Node.js)
+- **Banco de Dados:** PostgreSQL
+- **Testes:** Jest (TDD)
+- **Infraestrutura:** Docker & Docker Compose
+- **Deploy:** Vercel
 
 ## Implementação Técnica (Fase 1: Fundação)
 
 Nesta etapa, o foco está na qualidade da infraestrutura e segurança da aplicação:
 
-* **Sistema de Autenticação:** Fluxo completo de usuários e sessões utilizando Cookies (HttpOnly/Secure) e hashing de senhas.
-* **Gestão de Banco de Dados:** Evolução do esquema via migrations controladas com `node-pg-migrate`.
-* **Estratégia de Testes:** Implementação de testes de integração e ponta a ponta (E2E) garantindo a integridade das rotas de API.
-* **Resiliência:** Lógica de tratamento de erros e gerenciamento de conexões com o banco de dados.
-* **CI (Integração Contínua):** Automação de testes via GitHub Actions.
+- **Sistema de Autenticação:** Fluxo completo de usuários e sessões utilizando Cookies (HttpOnly/Secure) e hashing de senhas.
+- **Gestão de Banco de Dados:** Evolução do esquema via migrations controladas com `node-pg-migrate`.
+- **Estratégia de Testes:** Implementação de testes de integração e ponta a ponta (E2E) garantindo a integridade das rotas de API.
+- **Resiliência:** Lógica de tratamento de erros e gerenciamento de conexões com o banco de dados.
+- **CI (Integração Contínua):** Automação de testes via GitHub Actions.
 
 ## 🚀 Roadmap de Evolução (Pós-Curso)
 
@@ -38,3 +38,4 @@ git clone [https://github.com/seu-usuario/clone-tabnews.git](https://github.com/
 npm install
 npm run services:up
 npm run dev
+```
