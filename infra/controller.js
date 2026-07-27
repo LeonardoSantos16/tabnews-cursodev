@@ -1,5 +1,6 @@
 import * as cookie from "cookie";
 import session from "models/session.js";
+
 import {
   InternalServerError,
   MethodNotAllowedError,
@@ -14,11 +15,12 @@ function onNoMatchHandler(request, response) {
 }
 
 function onErrorHandler(error, request, response) {
-  if (
-    error instanceof ValidationError ||
-    error instanceof NotFoundError ||
-    error instanceof UnauthorizedError
-  ) {
+  if (error instanceof ValidationError || error instanceof NotFoundError) {
+    return response.status(error.statusCode).json(error);
+  }
+
+  if (error instanceof UnauthorizedError) {
+    clearSessionCookie(response);
     return response.status(error.statusCode).json(error);
   }
 
@@ -31,10 +33,10 @@ function onErrorHandler(error, request, response) {
   response.status(publicErrorObject.statusCode).json(publicErrorObject);
 }
 
-async function clearSessionCookie(response) {
-  const setCookie = cookie.serialize("session_id", "invalid", {
+async function setSessionCookie(sessionToken, response) {
+  const setCookie = cookie.serialize("session_id", sessionToken, {
     path: "/",
-    maxAge: -1,
+    maxAge: session.EXPIRATION_IN_MILLISECONDS / 1000,
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
   });
@@ -42,10 +44,10 @@ async function clearSessionCookie(response) {
   response.setHeader("Set-Cookie", setCookie);
 }
 
-async function setSessionCookie(sessionToken, response) {
-  const setCookie = cookie.serialize("session_id", sessionToken, {
+async function clearSessionCookie(response) {
+  const setCookie = cookie.serialize("session_id", "invalid", {
     path: "/",
-    maxAge: session.EXPIRATION_IN_MILLISECONDS / 1000,
+    maxAge: -1,
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
   });

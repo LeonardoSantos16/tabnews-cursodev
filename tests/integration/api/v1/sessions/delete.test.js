@@ -123,8 +123,7 @@ describe("DELETE /api/v1/sessions", () => {
           },
         },
       );
-      console.log("sessionObject.token " + sessionObject.token);
-      console.log("doubleckeck" + doubleCheckResponse);
+
       expect(doubleCheckResponse.status).toBe(401);
 
       const doubleCheckResponseBody = await doubleCheckResponse.json();
